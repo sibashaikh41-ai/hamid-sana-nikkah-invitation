@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#EFE6CE">
+<title>Sana and Hamid Nikkah</title>
+<script>document.documentElement.classList.add("entry-on","js");</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap">
+<style>
+/* Layout: ivory paper, sage-green drapes, white jasmine, gold lanterns and a gold arch.
+   Entry envelope -> drapes open -> blessing -> couple -> two scratch cards -> calendar -> details -> closing dua. */
+:root{
+  --ivory:#FBF7EC;
+  --cream:#F2E9D3;
+  --paper:#EFE6CE;
+  --sage:#A9B79B;
+  --sage-d:#6F8863;
+  --leaf:#4C6A3E;
+  --forest:#1F2C1F;
+  --forest-2:#2E4430;
+  --gold:#C6A15B;
+  --gold-deep:#8E6A2B;
+  --ink:#3A3626;
+  --ink-soft:#5E573F;
+  --foil:linear-gradient(115deg,#8E6A2B 0%,#E9D194 26%,#C6A15B 46%,#F3E3B2 66%,#9A7632 100%);
+  --font-serif:'Cormorant Garamond','Times New Roman',serif;
+  --font-script:'Pinyon Script','Snell Roundhand',cursive;
+  --font-arabic:'Amiri','Noto Naskh Arabic','Times New Roman',serif;
+  --font-body:'Jost',system-ui,sans-serif;
+  --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .44 0 0 0 0 .26 0 0 0 .13 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+  --motif:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%238E6A2B' stroke-opacity='.11' stroke-width='.9'%3E%3Ccircle cx='48' cy='48' r='4'/%3E%3Cpath d='M48 44C40 30 46 18 48 12C50 18 56 30 48 44ZM48 52C56 66 50 78 48 84C46 78 40 66 48 52ZM44 48C30 40 18 46 12 48C18 50 30 56 44 48ZM52 48C66 56 78 50 84 48C78 46 66 40 52 48Z'/%3E%3Cpath d='M0 0C10 8 8 18 0 24M96 0C86 8 88 18 96 24M0 96C10 88 8 78 0 72M96 96C86 88 88 78 96 72'/%3E%3C/g%3E%3C/svg%3E");
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html.entry-on,html.entry-on body{overflow:hidden}
+body{margin:0;background:radial-gradient(80% 50% at 50% 0%,#2F4631,#142016 72%),#142016;color:var(--ink);font-family:var(--font-body);font-weight:300;font-size:17px;line-height:1.65}
+p,h1,h2,h3,figure{margin:0}
+button{font:inherit}
+.col{position:relative;max-width:560px;margin:0 auto;background:var(--paper);box-shadow:0 0 90px rgba(0,0,0,.6);overflow:hidden}
+.parch{background-color:var(--paper);background-image:var(--noise),var(--motif),radial-gradient(130% 90% at 50% 38%,rgba(255,252,243,.75),rgba(196,170,110,.22))}
+.parch-ivory{background-color:var(--ivory);background-image:var(--noise),var(--motif),radial-gradient(130% 90% at 50% 40%,rgba(255,255,250,.9),rgba(222,204,160,.2))}
+.inner{padding-inline:max(16px,8%);position:relative;z-index:2}
+.progress{position:fixed;left:0;top:0;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:var(--foil);z-index:60}
+
+.foil{background:var(--foil);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.script{font-family:var(--font-script);font-weight:400;line-height:1.12}
+.emboss{text-shadow:0 1px 0 rgba(255,255,248,.8),0 2px 6px rgba(60,70,40,.18)}
+.sec{position:relative;padding-block:clamp(56px,16vw,88px);text-align:center}
+.eyebrow{font-family:var(--font-body);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-deep);font-weight:500}
+.h2{font-size:clamp(44px,12vw,58px);color:var(--forest)}
+.divider{display:block;width:150px;height:18px;margin:22px auto}
+
+/* jasmine garlands */
+.garland{position:absolute;width:var(--gs,170px);height:var(--gs,170px);pointer-events:none;filter:drop-shadow(0 4px 5px rgba(30,50,24,.28));z-index:3}
+.garland svg{width:100%;height:100%;display:block;overflow:visible}
+.garland.tl{left:0;top:0}
+.garland.tr{right:0;top:0;transform:scaleX(-1)}
+.garland.bl{left:0;bottom:0;transform:scaleY(-1)}
+.garland.br{right:0;bottom:0;transform:scale(-1,-1)}
+
+/* sage drapes */
+.velvet{position:relative}
+.cur{position:absolute;top:0;bottom:0;width:50%;z-index:6;pointer-events:none;overflow:visible;transition:width 3.4s cubic-bezier(.65,0,.25,1)}
+.cur::before{content:"";position:absolute;inset:0;background:var(--fold)}
+.cur::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,34,20,.34) 0,rgba(20,34,20,.03) 18%,rgba(0,0,0,0) 70%,rgba(20,34,20,.22) 100%),linear-gradient(90deg,rgba(20,34,20,.2),transparent 18%,transparent 82%,rgba(20,34,20,.2))}
+.cur.l{left:0}.cur.r{right:0}
+.cur.l::before{border-right:2px solid #D9BC7A}
+.cur.r::before{border-left:2px solid #D9BC7A}
+.velvet.open .cur,.velvet.static .cur{width:var(--cw,9%)}
+.tie{position:absolute;top:var(--tt,56%);width:100%;height:auto;z-index:2;opacity:0;transition:opacity 1.2s ease 2.2s;filter:drop-shadow(0 3px 3px rgba(20,34,20,.4))}
+.cur.l .tie{left:0}
+.cur.r .tie{right:0;transform:scaleX(-1)}
+.velvet.open .tie,.velvet.static .tie{opacity:1}
+.valance{position:absolute;left:0;right:0;top:0;width:100%;height:auto;z-index:8;pointer-events:none;filter:drop-shadow(0 5px 6px rgba(20,34,20,.35))}
+
+/* lanterns */
+.lantern{position:absolute;top:0;width:clamp(44px,13vw,64px);z-index:7;pointer-events:none;transform-origin:50% 0}
+.lantern svg{width:100%;height:auto;display:block;overflow:visible}
+.lantern.l{left:16%}.lantern.r{right:16%;margin-top:-34px}
+.lantern .fl{transform-box:fill-box;transform-origin:50% 100%}
+@media (prefers-reduced-motion:no-preference){
+  .lantern{animation:swing 7s ease-in-out infinite}
+  .lantern.r{animation-delay:-3s}
+  .lantern .fl{animation:flame 2.6s ease-in-out infinite}
+  @keyframes swing{0%,100%{transform:rotate(1.4deg)}50%{transform:rotate(-1.4deg)}}
+  @keyframes flame{0%,100%{transform:scale(1,1);opacity:1}40%{transform:scale(.92,1.08);opacity:.88}70%{transform:scale(1.04,.96);opacity:.95}}
+}
+
+/* stage */
+.stage{min-height:100svh;padding-block:0}
+.stage .arch{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.arch path{vector-effect:non-scaling-stroke}
+.glow{position:absolute;left:50%;top:40px;width:92%;aspect-ratio:1;transform:translateX(-50%);z-index:1;pointer-events:none;background:radial-gradient(closest-side,rgba(255,226,160,.55),rgba(255,226,160,.12) 55%,transparent 75%);opacity:0;transition:opacity 3s ease 1s}
+.velvet.open .glow{opacity:1}
+.stage-copy{position:relative;z-index:4;padding:max(300px,74vw) max(16px,17%) 88px;display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;gap:12px}
+.stage-copy>*{max-width:100%;overflow-wrap:anywhere}
+.sr{opacity:0;transform:translateY(14px);transition:opacity 1.4s ease,transform 1.4s ease}
+.velvet.open .sr{opacity:1;transform:none;transition-delay:calc(2.4s + var(--i,0)*.5s)}
+.bism{font-family:var(--font-arabic);font-size:clamp(24px,6.4vw,34px);line-height:1.4;color:var(--forest)}
+.bless{font-family:var(--font-serif);font-style:italic;font-weight:600;font-size:clamp(16px,4.2vw,20px);color:var(--ink-soft)}
+.shayari{font-family:var(--font-serif);font-style:italic;font-weight:600;font-size:clamp(13.5px,3.5vw,18px);line-height:1.65;color:var(--ink)}
+.shayari span{display:block;text-wrap:balance}
+.invite{font-family:var(--font-serif);font-weight:500;font-size:clamp(18px,4.7vw,21px);line-height:1.5;color:var(--ink-soft);max-width:26ch}
+.nm{font-size:clamp(64px,19vw,92px);color:var(--forest)}
+.with{font-family:var(--font-serif);font-style:italic;font-weight:600;font-size:24px;color:var(--gold-deep)}
+.quote{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(18px,4.8vw,21px);line-height:1.5;color:var(--ink-soft);max-width:24ch}
+
+/* couple */
+.lead-in{font-family:var(--font-serif);font-weight:500;font-size:clamp(18px,4.8vw,21px);line-height:1.5;color:var(--ink-soft);max-width:26ch;margin:18px auto 0}
+.caps{font-family:var(--font-serif);font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:clamp(22px,6vw,28px);color:var(--forest);margin-top:6px}
+.arch-frame{position:relative;width:min(100%,430px);margin:34px auto 0;aspect-ratio:430/560}
+.arch-frame>svg.archsvg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.arch-frame img{position:absolute;left:50%;bottom:6%;width:72%;height:auto;transform:translateX(-50%);filter:drop-shadow(0 14px 12px rgba(30,44,24,.3));z-index:2}
+.fam{margin-top:30px;display:grid;gap:4px}
+.fam .nm2{font-size:clamp(36px,10.4vw,52px);color:var(--forest)}
+.fam .par{font-family:var(--font-serif);font-weight:500;font-size:clamp(17px,4.5vw,20px);line-height:1.45;color:var(--ink-soft)}
+.fam .par b{font-weight:600;color:var(--ink)}
+
+/* scratch cards */
+.scratch-wrap{display:grid;justify-items:center;gap:20px;margin-top:26px}
+.scratch-card{position:relative;width:min(100%,340px);height:292px;border-radius:4px;overflow:hidden;box-shadow:0 14px 30px rgba(40,56,30,.28),0 0 0 1px rgba(142,106,43,.55)}
+.under{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:3px;padding:24px 26px;text-align:center;background-color:var(--ivory);background-image:var(--noise),radial-gradient(90% 80% at 50% 40%,#fffdf6,#F3EAD2)}
+.under::before{content:"";position:absolute;inset:9px;border:1px solid var(--gold);pointer-events:none}
+.under::after{content:"";position:absolute;inset:14px;border:1px solid rgba(198,161,91,.5);pointer-events:none}
+.under .sd{font-size:clamp(40px,12vw,48px);color:var(--forest)}
+.drow{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:6px;width:100%;margin:2px 0}
+.drow .side{font-family:var(--font-serif);font-weight:700;font-size:clamp(17px,5vw,21px);letter-spacing:.08em;color:var(--forest);text-transform:uppercase;position:relative}
+.drow .side::after{content:"";position:absolute;left:0;right:0;top:-8px;height:1px;background:var(--gold)}
+.drow .side::before{content:"";position:absolute;left:0;right:0;bottom:-8px;height:1px;background:var(--gold)}
+.wreath{position:relative;width:108px;height:108px;display:grid;place-content:center;text-align:center;line-height:1}
+.wreath svg{position:absolute;inset:0;width:100%;height:100%}
+.wreath b{font-family:var(--font-serif);font-weight:700;font-size:34px;color:var(--forest)}
+.wreath i{font-family:var(--font-serif);font-style:normal;font-weight:700;font-size:23px;color:var(--forest)}
+.under .dt{font-family:var(--font-serif);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:clamp(15px,4.2vw,17px);color:var(--forest);margin-top:4px}
+.under .ce{font-family:var(--font-serif);font-style:italic;font-weight:600;font-size:20px;color:var(--gold-deep)}
+.under .sm{font-family:var(--font-body);letter-spacing:.2em;text-transform:uppercase;font-size:11.5px;color:var(--ink-soft);margin-top:4px}
+.under .vn{font-family:var(--font-serif);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:clamp(26px,7.6vw,32px);color:var(--forest);line-height:1.15}
+.under .va{font-family:var(--font-serif);font-weight:500;font-size:20px;color:var(--ink)}
+.scratch-card canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:grab;transition:opacity 1s ease}
+.scratch-card canvas.done{opacity:0;pointer-events:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--font-body);font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--ivory);background:linear-gradient(180deg,#44633F,#27402B);
+  border:1px solid var(--gold);border-radius:2px;padding:14px 26px;text-decoration:none;cursor:pointer;box-shadow:0 8px 18px rgba(30,50,26,.28);transition:transform .25s ease,box-shadow .25s ease,filter .25s ease}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.12);box-shadow:0 12px 22px rgba(30,50,26,.34)}
+.btn[hidden]{display:none!important}
+.btn svg{width:16px;height:16px;flex:none}
+.linkbtn{background:none;border:0;padding:0;font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:17px;color:var(--ink-soft);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.btn:focus-visible,.linkbtn:focus-visible,.fab:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+
+/* calendar */
+.cal{position:relative;width:min(100%,360px);margin:26px auto 0;padding:40px 22px 30px;background-color:var(--ivory);background-image:var(--noise);border:1px solid var(--gold);box-shadow:0 14px 30px rgba(40,56,30,.2),inset 0 0 0 6px var(--ivory),inset 0 0 0 7px rgba(198,161,91,.6);overflow:hidden}
+.cal .garland{--gs:66px}
+.cal-month{font-family:var(--font-serif);font-weight:700;letter-spacing:.2em;font-size:22px;color:var(--forest);text-transform:uppercase}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);row-gap:4px;margin-top:16px;position:relative;z-index:2}
+.cal-grid span{aspect-ratio:1;display:grid;place-items:center;font-family:var(--font-serif);font-weight:600;font-size:19px;color:var(--ink);font-variant-numeric:lining-nums tabular-nums}
+.cal-grid .dow{font-family:var(--font-body);font-size:11px;letter-spacing:.1em;color:var(--gold-deep);font-weight:500;aspect-ratio:auto;padding-bottom:6px;border-bottom:1px solid rgba(198,161,91,.5);margin-bottom:6px}
+.cal-grid .hit{position:relative;color:var(--forest);font-weight:700}
+.cal-grid .hit::before{content:"";position:absolute;inset:-2px;border:1.5px solid var(--gold);border-radius:50%;box-shadow:0 0 0 3px rgba(198,161,91,.22)}
+.cal-grid .hit::after{content:"";position:absolute;inset:3px;border:1px solid rgba(198,161,91,.7);border-radius:50%}
+
+/* details */
+.panel{padding-block:96px 76px}
+.panel .velvet-in{position:relative;z-index:4;margin:0 auto;width:min(100%,560px);padding-inline:max(16px,15%)}
+.dcard{position:relative;background-color:var(--ivory);background-image:var(--noise),var(--motif);padding:56px 22px 32px;border:1px solid var(--gold);box-shadow:0 18px 36px rgba(20,34,20,.3),inset 0 0 0 6px var(--ivory),inset 0 0 0 7px rgba(198,161,91,.65);overflow:hidden}
+.dcard .garland{--gs:62px}
+.rows{display:grid;gap:18px;margin-top:24px;text-align:left;position:relative;z-index:2}
+.row{display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;align-items:start}
+.ic{width:34px;height:34px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;background:linear-gradient(180deg,#fffdf4,#F3EAD2)}
+.ic svg{width:17px;height:17px}
+.row b{display:block;font-family:var(--font-serif);font-weight:700;letter-spacing:.1em;font-size:18px;color:var(--forest);text-transform:uppercase;line-height:1.3}
+.row span,.row a{font-family:var(--font-serif);font-weight:500;font-size:19px;color:var(--ink);line-height:1.35}
+.row a{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--gold)}
+.fmsg{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:19px;line-height:1.5;color:var(--ink-soft);margin-top:22px;position:relative;z-index:2}
+.qrbox{display:grid;justify-items:center;gap:8px;margin-top:26px;position:relative;z-index:2}
+.qr{padding:8px;background:var(--ivory);border:1px solid var(--gold);line-height:0}
+.qr img,.qr canvas{display:block;max-width:100%;height:auto}
+.qrbox small{font-family:var(--font-body);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+
+/* closing */
+.closing{padding-block:170px 170px}
+.dua{font-family:var(--font-arabic);font-size:clamp(25px,6.8vw,32px);line-height:1.8;color:var(--forest)}
+.en{font-family:var(--font-serif);font-weight:500;font-size:clamp(19px,5vw,23px);line-height:1.55;color:var(--ink);max-width:26ch;margin:0 auto}
+.rem{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:20px;color:var(--ink-soft)}
+.love{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:20px;color:var(--ink-soft);margin-top:30px}
+.sign{font-size:clamp(46px,13vw,64px);color:var(--forest)}
+.memorial{margin:44px auto 0;max-width:300px;padding:18px 16px 16px;border-top:1px solid rgba(198,161,91,.7);border-bottom:1px solid rgba(198,161,91,.7);position:relative}
+.memorial .m1{font-family:var(--font-serif);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:15px;color:var(--ink)}
+.memorial .m2{font-family:var(--font-serif);font-weight:600;font-size:17px;color:var(--ink-soft);line-height:1.3}
+.memorial .m3{font-family:var(--font-serif);font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:19px;color:var(--forest);margin-top:2px}
+.memorial .m4{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:16px;color:var(--ink-soft);margin-top:8px;line-height:1.4}
+
+html.js .rv{opacity:0;transform:translateY(18px);transition:opacity 1.2s ease,transform 1.2s ease}
+html.js .rv.in{opacity:1;transform:none}
+
+.fab{position:fixed;z-index:55;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid var(--gold);background:linear-gradient(180deg,#44633F,#27402B);color:#F1E2B0;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,.35);transition:opacity .4s ease,transform .3s ease}
+.fab svg{width:20px;height:20px}
+#musicBtn{right:max(14px,env(safe-area-inset-right,0px));bottom:max(14px,env(safe-area-inset-bottom,0px))}
+#topBtn{right:max(14px,env(safe-area-inset-right,0px));bottom:calc(max(14px,env(safe-area-inset-bottom,0px)) + 54px);opacity:0;pointer-events:none}
+#topBtn.show{opacity:1;pointer-events:auto}
+#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:58}
+
+/* entry */
+#entry{position:fixed;inset:0;z-index:70;display:grid;place-items:center;overflow:hidden;transition:opacity 1.2s ease,transform 1.6s ease,visibility 0s 1.2s}
+#entry.gone{opacity:0;transform:scale(1.06);visibility:hidden;pointer-events:none}
+#entry .garland{--gs:min(34vw,150px);z-index:1}
+#dust{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
+.entry-in{position:relative;z-index:4;display:grid;justify-items:center;gap:clamp(14px,2.6svh,24px);text-align:center;padding:16px}
+.entry-in .cord{font-size:clamp(34px,min(10vw,5.4svh),50px);color:var(--forest)}
+.skip{background:none;border:0;padding:6px;font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:16px;color:var(--ink-soft);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.env{--w:min(58vw,260px,calc(34svh*.77));position:relative;width:var(--w);height:calc(var(--w)*1.3);cursor:pointer;filter:drop-shadow(0 22px 24px rgba(50,56,30,.38))}
+.env-back{position:absolute;inset:0;border-radius:2px;background:var(--noise),linear-gradient(160deg,#ECE2C6,#D4C79F)}
+.letter{position:absolute;left:7%;right:7%;top:8%;height:82%;z-index:2;background:var(--noise),linear-gradient(180deg,#FFFDF5,#F3EAD2);border:1px solid var(--gold);display:grid;place-content:center;text-align:center;
+  box-shadow:inset 0 0 0 5px #FFFDF5,inset 0 0 0 6px rgba(198,161,91,.6);transition:transform 1.3s cubic-bezier(.3,.7,.2,1) 1.5s}
+.letter .s1{font-family:var(--font-script);font-size:calc(var(--w)*.16);color:var(--forest);line-height:1.1}
+.letter .s2{font-family:var(--font-body);font-size:calc(var(--w)*.032);letter-spacing:.28em;color:var(--gold-deep);margin-top:6px;font-weight:500}
+.env.open .letter{transform:translateY(-52%)}
+.env-front{position:absolute;inset:0;z-index:3;border-radius:2px;clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%);background:var(--noise),linear-gradient(180deg,#F7F0DC,#E6DBBC)}
+.env-front::after{content:"";position:absolute;inset:9px;border:1px solid rgba(142,106,43,.5)}
+.flap{position:absolute;left:0;top:0;width:100%;height:56%;z-index:5;transform-origin:50% 0;clip-path:polygon(0 0,100% 0,50% 100%);
+  background:var(--noise),linear-gradient(180deg,#F1E8CE,#DDD0A8);transition:transform 1.1s cubic-bezier(.5,0,.2,1) .55s,z-index 0s 1.1s}
+.env.open .flap{transform:rotateX(180deg);z-index:1;background:var(--noise),linear-gradient(0deg,#E1D5AE,#C9B987)}
+.sealbox{position:absolute;left:50%;top:56%;width:27%;aspect-ratio:1;translate:-50% -50%;z-index:6}
+.seal{position:absolute;inset:0;border-radius:47% 53% 51% 49%/50% 46% 54% 50%;display:grid;place-content:center;font-family:var(--font-script);font-size:calc(var(--w)*.085);color:#F0D98F;text-shadow:0 1px 1px rgba(0,0,0,.55);white-space:nowrap;
+  background:radial-gradient(circle at 34% 28%,#6C9565 0%,#456B45 46%,#27402B 100%);
+  box-shadow:0 4px 10px rgba(20,36,20,.55),inset 0 2px 3px rgba(210,240,200,.3),inset 0 -4px 8px rgba(0,0,0,.4);transition:transform 1.1s cubic-bezier(.5,0,.4,1),opacity .9s ease .5s}
+.seal::before{content:"";position:absolute;inset:11%;border-radius:inherit;border:1px solid rgba(240,217,143,.65)}
+.seal.l{clip-path:polygon(0 0,54% 0,46% 22%,56% 48%,47% 72%,52% 100%,0 100%)}
+.seal.r{clip-path:polygon(54% 0,100% 0,100% 100%,52% 100%,47% 72%,56% 48%,46% 22%)}
+.env.open .seal.l{transform:translate(-26px,46px) rotate(-16deg);opacity:0}
+.env.open .seal.r{transform:translate(26px,52px) rotate(18deg);opacity:0}
+@media (prefers-reduced-motion:no-preference){
+  .env:not(.open) .sealbox{animation:pulse 3s ease-in-out infinite}
+  @keyframes pulse{0%,100%{filter:drop-shadow(0 0 0 rgba(198,161,91,0))}50%{filter:drop-shadow(0 0 12px rgba(198,161,91,.85))}}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .cur,.tie,.glow,.sr,.letter,.flap,.seal,#entry,html.js .rv{transition-duration:.01s!important;transition-delay:0s!important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="gLeafG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7FA063"/><stop offset=".55" stop-color="#4F6F40"/><stop offset="1" stop-color="#34502D"/></linearGradient>
+    <linearGradient id="gFoil" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8E6A2B"/><stop offset=".3" stop-color="#EBD395"/><stop offset=".55" stop-color="#C6A15B"/><stop offset=".8" stop-color="#F3E3B2"/><stop offset="1" stop-color="#9A7632"/></linearGradient>
+    <radialGradient id="gFlame" cx="50%" cy="65%" r="60%"><stop offset="0" stop-color="#FFF6D0"/><stop offset=".5" stop-color="#FFC95E"/><stop offset="1" stop-color="#FF9A2E" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gGlass" cx="50%" cy="68%" r="62%"><stop offset="0" stop-color="#FFF0BF" stop-opacity=".95"/><stop offset=".55" stop-color="#F7CF7A" stop-opacity=".6"/><stop offset="1" stop-color="#E7B25A" stop-opacity=".25"/></radialGradient>
+    <radialGradient id="gHalo" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFE7A3" stop-opacity=".75"/><stop offset="1" stop-color="#FFE7A3" stop-opacity="0"/></radialGradient>
+  </defs>
+</svg>
+
+<div class="progress" id="progress"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<!-- ============ ENTRY ============ -->
+<div id="entry" class="parch">
+  <div class="garland tl" data-garland></div><div class="garland tr" data-garland></div>
+  <div class="garland bl" data-garland></div><div class="garland br" data-garland></div>
+  <canvas id="dust" aria-hidden="true"></canvas>
+  <div class="entry-in">
+    <p class="cord script emboss">You Are Cordially Invited</p>
+    <div class="env" id="env">
+      <div class="env-back"></div>
+      <div class="letter"><span class="s1" data-bind="initials">Sana &amp; Hamid</span><span class="s2">NIKKAH INVITATION</span></div>
+      <div class="env-front"></div>
+      <div class="flap"></div>
+      <div class="sealbox" aria-hidden="true"><div class="seal l">S &amp; H</div><div class="seal r">S &amp; H</div></div>
+    </div>
+    <button class="btn" id="openBtn" type="button">Open Your Invitation</button>
+    <button class="skip" id="skipBtn" type="button">Skip animation</button>
+  </div>
+</div>
+
+<main class="col" id="site">
+
+  <!-- ============ 1. DRAPE REVEAL ============ -->
+  <section class="sec stage velvet parch" id="stage" aria-label="Invitation">
+    <svg class="arch" viewBox="0 0 300 1000" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M40 1000V330C40 238 124 214 150 118C176 214 260 238 260 330V1000Z" fill="#FFFDF6" fill-opacity=".55" stroke="#B08A3E" stroke-width="1.5"/>
+      <path d="M50 1000V334C50 246 128 224 150 142C172 224 250 246 250 334V1000" fill="none" stroke="#C6A15B" stroke-opacity=".7" stroke-width="1"/>
+    </svg>
+    <div class="glow" aria-hidden="true"></div>
+    <div class="lantern l" data-lantern></div>
+    <div class="lantern r" data-lantern></div>
+    <div class="cur l" data-side="l"></div>
+    <div class="cur r" data-side="r"></div>
+    <div class="garland tl parallax" data-garland style="--gs:min(36vw,180px);top:40px;z-index:9"></div>
+    <div class="garland tr parallax" data-garland style="--gs:min(36vw,180px);top:40px;z-index:9"></div>
+    <svg class="valance" data-valance viewBox="0 0 560 84" preserveAspectRatio="none" aria-hidden="true"></svg>
+
+    <div class="stage-copy">
+      <p class="bism sr" style="--i:0" lang="ar" dir="rtl">بسم الله الرحمن الرحيم</p>
+      <p class="bless sr" style="--i:1">With the blessings of Almighty Allah</p>
+      <svg class="divider sr" style="--i:2;margin:8px auto" viewBox="0 0 150 18" aria-hidden="true"><path d="M0 9H58M92 9H150" stroke="#B08A3E" fill="none"/><path d="M75 2L82 9L75 16L68 9Z" fill="none" stroke="#B08A3E"/><circle cx="75" cy="9" r="1.8" fill="#B08A3E"/></svg>
+      <p class="shayari sr" style="--i:3" lang="hi-Latn">
+        <span>Jo rishta aasmanon mein likha jaata hai,</span>
+        <span>wahi nikah ke lafzon mein sajaya jaata hai,</span>
+        <span>Do dil nahi, do naseeb judte hain is din,</span>
+        <span>Jab Rab ki raza se ek rishta banaya jaata hai.</span>
+      </p>
+      <p class="invite sr" style="--i:4;margin-top:14px">We joyfully invite you to celebrate the Nikkah ceremony of</p>
+      <p class="nm script emboss sr" style="--i:5" data-bind="bride.short">Sana</p>
+      <p class="with sr" style="--i:6">weds</p>
+      <p class="nm script emboss sr" style="--i:7" data-bind="groom.short">Hamid</p>
+      <p class="quote sr" style="--i:8">Two hearts, one beautiful promise, and a lifetime of duas.</p>
+    </div>
+  </section>
+
+  <!-- ============ 2. COUPLE ============ -->
+  <section class="sec parch-ivory" id="couple-sec">
+    <div class="garland tl" data-garland style="--gs:min(24vw,110px)"></div><div class="garland tr" data-garland style="--gs:min(24vw,110px)"></div>
+    <div class="inner">
+      <p class="eyebrow rv">With love &amp; blessings</p>
+      <p class="lead-in rv">With love, blessings and good wishes, we cordially invite you to the</p>
+      <p class="caps rv">Nikkah Ceremony</p>
+      <p class="with rv" style="font-weight:500;margin-top:2px">of</p>
+      <div class="arch-frame rv" id="archFrame">
+        <svg class="archsvg" viewBox="0 0 430 560" preserveAspectRatio="none" aria-hidden="true">
+          <defs><radialGradient id="aGlow" cx="50%" cy="70%" r="65%"><stop offset="0" stop-color="#F3DFA0" stop-opacity=".6"/><stop offset="1" stop-color="#F3DFA0" stop-opacity="0"/></radialGradient></defs>
+          <path d="M14 560V250C14 150 150 128 215 20C280 128 416 150 416 250V560Z" fill="url(#aGlow)"/>
+          <path d="M14 560V250C14 150 150 128 215 20C280 128 416 150 416 250V560" fill="none" stroke="url(#gFoil)" stroke-width="2.4" vector-effect="non-scaling-stroke"/>
+          <path d="M30 560V254C30 164 156 144 215 52C274 144 400 164 400 254V560" fill="none" stroke="#C6A15B" stroke-opacity=".6" stroke-width="1" vector-effect="non-scaling-stroke"/>
+        </svg>
+        <img src="couple.webp" width="720" height="1006" loading="lazy" alt="Illustration of the bride in a maroon and gold veiled lehenga standing beside the groom in a cream sherwani with a maroon shawl, seen from behind">
+        <div class="garland bl parallax" data-garland style="--gs:36%"></div>
+        <div class="garland br parallax" data-garland style="--gs:36%"></div>
+        <div class="lantern l" data-lantern style="left:4%;top:auto;bottom:6%;width:15%;z-index:4;animation:none"></div>
+      </div>
+      <div class="fam">
+        <p class="nm2 script emboss rv" data-bind="bride.full">Qadri Sana Shaikh</p>
+        <p class="par rv">Daughter of <b data-bind="bride.father">Nasir Yusuf Shaikh</b><br>&amp; <b data-bind="bride.mother">Saeeda Nasir Shaikh</b></p>
+        <p class="with rv" style="margin-block:12px">weds</p>
+        <p class="nm2 script emboss rv" data-bind="groom.full">Hamid Mohammad Patel</p>
+        <p class="par rv">Son of <b data-bind="groom.father">Mohammed Rajak Patel</b><br>&amp; <b data-bind="groom.mother">Tarsina Mohammed Patel</b></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. DATE CARD ============ -->
+  <section class="sec parch" id="date-sec">
+    <div class="inner">
+      <p class="eyebrow rv">A Date to Remember</p>
+      <svg class="divider rv" viewBox="0 0 150 18" aria-hidden="true"><path d="M0 9H58M92 9H150" stroke="#B08A3E" fill="none"/><path d="M75 2L82 9L75 16L68 9Z" fill="none" stroke="#B08A3E"/></svg>
+      <div class="scratch-wrap rv">
+        <div class="scratch-card" id="c1">
+          <div class="under">
+            <p class="sd script emboss">Save the Date</p>
+            <div class="drow">
+              <span class="side" data-bind="weekdayShort">Sun</span>
+              <div class="wreath"><span data-wreath></span><b data-bind="dayNum">22</b><i data-bind="monthShort">Nov</i></div>
+              <span class="side" data-bind="displayTimeShort">7 PM</span>
+            </div>
+            <p class="dt" data-bind="dateText">22 November 2026</p>
+            <p class="ce">Nikkah Ceremony</p>
+          </div>
+        </div>
+        <button class="linkbtn" id="rev1" type="button">Reveal without scratching</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. VENUE CARD ============ -->
+  <section class="sec parch-ivory" id="venue-sec">
+    <div class="inner">
+      <p class="eyebrow rv">A Place to Gather</p>
+      <svg class="divider rv" viewBox="0 0 150 18" aria-hidden="true"><path d="M0 9H58M92 9H150" stroke="#B08A3E" fill="none"/><path d="M75 2L82 9L75 16L68 9Z" fill="none" stroke="#B08A3E"/></svg>
+      <div class="scratch-wrap rv">
+        <div class="scratch-card" id="c2">
+          <div class="under">
+            <p class="eyebrow">The Venue</p>
+            <p class="vn" data-bind="venue.name">YMCA Hall</p>
+            <p class="va" data-bind="venue.address">Manickpur, Vasai West</p>
+            <p class="sm"><span data-bind="weekday">Sunday</span> &middot; <span data-bind="displayTime">7:00 PM</span></p>
+          </div>
+        </div>
+        <button class="linkbtn" id="rev2" type="button">Reveal without scratching</button>
+        <a class="btn" id="dirBtn" hidden target="_blank" rel="noopener" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.6"/></svg>Get Directions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. CALENDAR ============ -->
+  <section class="sec parch" id="cal-sec">
+    <div class="inner">
+      <h2 class="h2 script emboss rv">Save the Date</h2>
+      <div class="cal rv">
+        <div class="garland tl" data-garland></div><div class="garland br" data-garland></div>
+        <p class="cal-month" id="calMonth">November 2026</p>
+        <div class="cal-grid" id="calGrid" role="grid" aria-label="Calendar"></div>
+      </div>
+      <div style="margin-top:28px" class="rv">
+        <a class="btn" id="gcalBtn" target="_blank" rel="noopener" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Add to Google Calendar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. DETAILS BETWEEN DRAPES ============ -->
+  <section class="sec panel velvet parch" id="details" style="--cw:12%;--tt:48%">
+    <div class="cur l" data-side="l"></div>
+    <div class="cur r" data-side="r"></div>
+    <svg class="valance" data-valance viewBox="0 0 560 84" preserveAspectRatio="none" aria-hidden="true"></svg>
+    <div class="velvet-in">
+      <div class="dcard rv">
+        <div class="garland tl" data-garland></div><div class="garland tr" data-garland></div>
+        <p class="eyebrow">Wedding Details</p>
+        <h2 class="script emboss" style="font-size:clamp(30px,8.4vw,40px);color:var(--forest);margin-top:4px;white-space:nowrap">Nikkah Ceremony</h2>
+        <div class="rows">
+          <div class="row"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#8E6A2B" stroke-width="1.5"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></div><div><b>Date</b><span><span data-bind="weekday">Sunday</span>, <span data-bind="dateText">22 November 2026</span></span></div></div>
+          <div class="row"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#8E6A2B" stroke-width="1.5"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.2 2"/></svg></div><div><b>Time</b><span data-bind="displayTime">7:00 PM</span></div></div>
+          <div class="row"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#8E6A2B" stroke-width="1.5"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.6"/></svg></div><div><b data-bind="venue.name">YMCA Hall</b><span data-bind="venue.address">Manickpur, Vasai West</span></div></div>
+          <div class="row" id="phoneRow" hidden><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#8E6A2B" stroke-width="1.5"><path d="M5 4h4l1.6 4.2-2.2 1.4a11 11 0 0 0 6 6l1.4-2.2L20 15v4a1.5 1.5 0 0 1-1.6 1.5C10.5 20 4 13.5 3.5 5.6A1.5 1.5 0 0 1 5 4Z"/></svg></div><div><b>Contact</b><a id="telLink" href="#">&nbsp;</a></div></div>
+        </div>
+        <p class="fmsg" data-bind="familyMessage">With love, blessings and good wishes, we cordially invite you and your family to join us in celebrating our Nikkah.</p>
+        <div class="qrbox" id="qrbox">
+                    <a class="btn" id="dirBtn2" target="_blank" rel="noopener" href="#" >Get Directions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7. CLOSING DUA ============ -->
+  <section class="sec closing parch-ivory" id="closing">
+    <div class="garland tl" data-garland style="--gs:min(32vw,140px)"></div><div class="garland tr" data-garland style="--gs:min(32vw,140px)"></div>
+    <div class="garland bl" data-garland style="--gs:min(32vw,140px)"></div><div class="garland br" data-garland style="--gs:min(32vw,140px)"></div>
+    <div class="inner">
+      <p class="dua rv" lang="ar" dir="rtl">بارك الله لكما وبارك عليكما وجمع بينكما في خير</p>
+      <svg class="divider rv" viewBox="0 0 150 18" aria-hidden="true"><path d="M0 9H58M92 9H150" stroke="#B08A3E" fill="none"/><path d="M75 2L82 9L75 16L68 9Z" fill="none" stroke="#B08A3E"/><circle cx="75" cy="9" r="1.8" fill="#B08A3E"/></svg>
+      <p class="en rv">May Allah bless this beautiful union with love, mercy, happiness, and endless barakah.</p>
+      <p class="rem rv" style="margin-top:20px">Please remember us in your duas.</p>
+      <p class="love rv" data-bind="complimentsLine">With the Best Compliments &amp; Duas,</p>
+      <p class="sign script emboss rv" data-bind="compliments">Shaikh Family</p>
+      <div class="memorial rv" id="memorial" hidden>
+        <p class="m1" data-bind="memorial.title">In Loving Memory</p>
+        <p class="m2" data-bind="memorial.line">My Beloved Brother</p>
+        <p class="m3" data-bind="memorial.name">Wasim Nasir Shaikh</p>
+        <p class="m4" data-bind="memorial.dua">May Allah grant him the highest rank in Jannah. Aameen.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<button class="fab" id="musicBtn" type="button" aria-pressed="false" aria-label="Turn music on">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" id="musicIcon"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5H4Z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11" id="waves"/></svg>
+</button>
+<button class="fab" id="topBtn" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 14l6-6 6 6"/></svg></button>
+
+<script>
+/* =====================================================================
+   EDIT YOUR DETAILS HERE. Everything on the page reads from this object.
+   ===================================================================== */
+const CONFIG = {
+  bride: { short:"Sana",  full:"Qadri Sana Shaikh",     father:"Nasir Yusuf Shaikh",     mother:"Saeeda Nasir Shaikh" },
+  groom: { short:"Hamid", full:"Hamid Mohammad Patel",  father:"Mohammed Rajak Patel",   mother:"Tarsina Mohammed Patel" },
+  initials: "Sana & Hamid",
+  date: "2026-11-22",          // YYYY-MM-DD
+  time: "19:00",               // 24 hour, local time
+  durationHours: 3,            // used for the calendar entry
+  timezone: "Asia/Kolkata",
+  displayTime: "7:00 PM",
+  displayTimeShort: "7 PM",
+  venue: {
+    name: "YMCA Hall",
+    address: "Manickpur, Vasai West",
+    mapsQuery: "YMCA Hall Manickpur Vasai West"   // what Google Maps searches for
+  },
+  phone: "+91 88509 03969",    // shown as a tap-to-call link. Leave "" to hide.
+  phoneTel: "+918850903969",
+  complimentsLine: "With the Best Compliments & Duas,",
+  compliments: "Shaikh Family",
+  memorial: {                  // set to null to remove this block
+    title: "In Loving Memory",
+    line: "My Beloved Brother",
+    name: "Wasim Nasir Shaikh",
+    dua: "May Allah grant him the highest rank in Jannah. Aameen."
+  },
+  music: "music.mp3",          // your music file, in the same folder as index.html. Set to "" to use the soft built-in ambient sound.
+  musicLoop: false,            // false = plays once and stops. true = repeats.
+  musicOnOpen: true,           // true = music starts on the guest's first touch. false = only the speaker button starts it.
+  familyMessage: "With love, blessings and good wishes, we cordially invite you and your family to join us in celebrating our Nikkah."
+};
+
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const root = document.documentElement;
+const $ = id => document.getElementById(id);
+const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const [Y,M,D] = CONFIG.date.split("-").map(Number);
+const dateObj = new Date(Y, M-1, D);
+CONFIG.weekday = DAYS[dateObj.getDay()];
+CONFIG.weekdayShort = CONFIG.weekday.slice(0,3);
+CONFIG.dateText = D + " " + MONTHS[M-1] + " " + Y;
+CONFIG.dayNum = String(D);
+CONFIG.monthShort = MONTHS[M-1].slice(0,3);
+const mapsUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(CONFIG.venue.mapsQuery);
+
+document.querySelectorAll("[data-bind]").forEach(el=>{
+  const v = el.dataset.bind.split(".").reduce((o,k)=>o && o[k], CONFIG);
+  if(typeof v === "string") el.textContent = v;
+});
+document.title = CONFIG.bride.short + " and " + CONFIG.groom.short + " Nikkah";
+if(CONFIG.phone){ const r=$("phoneRow"), a=$("telLink"); r.hidden=false; a.textContent=CONFIG.phone; a.href="tel:"+CONFIG.phoneTel; }
+if(CONFIG.memorial) $("memorial").hidden=false;
+
+/* ---------- seeded random ---------- */
+function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+
+/* ---------- jasmine garland ---------- */
+function jasmine(cx,cy,r,rot){
+  let s=`<g transform="translate(${cx.toFixed(1)} ${cy.toFixed(1)}) rotate(${rot.toFixed(0)})"><circle r="${(r*.95).toFixed(1)}" fill="#3F5A33" opacity=".18"/>`;
+  for(let k=0;k<5;k++) s+=`<ellipse cx="0" cy="${(-r*.52).toFixed(1)}" rx="${(r*.38).toFixed(1)}" ry="${(r*.58).toFixed(1)}" transform="rotate(${k*72})" fill="#FFFFFF" stroke="#D8D0B2" stroke-width=".5"/>`;
+  s+=`<circle r="${(r*.2).toFixed(1)}" fill="#F0D98A"/><circle r="${(r*.09).toFixed(1)}" fill="#C99B35"/></g>`;
+  return s;
+}
+function leafG(x,y,len,ang){
+  return `<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${ang.toFixed(1)})"><path d="M0 0C${(.25*len).toFixed(1)} ${(-.38*len).toFixed(1)} ${(.72*len).toFixed(1)} ${(-.38*len).toFixed(1)} ${len.toFixed(1)} 0C${(.72*len).toFixed(1)} ${(.38*len).toFixed(1)} ${(.25*len).toFixed(1)} ${(.38*len).toFixed(1)} 0 0Z" fill="url(#gLeafG)" stroke="#2F4A28" stroke-width=".4"/><path d="M0 0L${(.9*len).toFixed(1)} 0" stroke="#A8C58B" stroke-width=".5" opacity=".7"/></g>`;
+}
+function bud(x,y,ang){ return `<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${ang.toFixed(0)})"><ellipse cx="0" cy="-4" rx="2.2" ry="4.6" fill="#F6F3E6" stroke="#CFC8A8" stroke-width=".4"/><path d="M-1.6 0Q0 -2 1.6 0Z" fill="#6E8E52"/></g>`; }
+function garlandSVG(){
+  const g=rng(21);
+  const vines=[
+    [[0,8],[60,-6],[130,26],[238,98]],
+    [[8,0],[-6,64],[28,138],[98,238]],
+    [[10,12],[74,38],[112,92],[152,170]],
+    [[12,10],[38,72],[86,104],[172,152]]
+  ];
+  const bp=(p,t)=>{const u=1-t;return[u*u*u*p[0][0]+3*u*u*t*p[1][0]+3*u*t*t*p[2][0]+t*t*t*p[3][0],u*u*u*p[0][1]+3*u*u*t*p[1][1]+3*u*t*t*p[2][1]+t*t*t*p[3][1]]};
+  const bd=(p,t)=>{const u=1-t;return[3*u*u*(p[1][0]-p[0][0])+6*u*t*(p[2][0]-p[1][0])+3*t*t*(p[3][0]-p[2][0]),3*u*u*(p[1][1]-p[0][1])+6*u*t*(p[2][1]-p[1][1])+3*t*t*(p[3][1]-p[2][1])]};
+  let back='', front='';
+  vines.forEach((p,vi)=>{
+    back+=`<path d="M${p[0]} C${p[1]} ${p[2]} ${p[3]}" fill="none" stroke="#587A45" stroke-width="1.5"/>`;
+    const n=vi<2?15:10;
+    for(let i=1;i<=n;i++){
+      const t=i/(n+1), [x,y]=bp(p,t), [dx,dy]=bd(p,t), a=Math.atan2(dy,dx)*180/Math.PI, len=14+g()*10;
+      back+=leafG(x,y,len,a+48+g()*20)+leafG(x,y,len*.9,a-48-g()*20);
+      if(i%2===0 || g()>.55){
+        const nx=-dy/Math.hypot(dx,dy), ny=dx/Math.hypot(dx,dy), off=(g()-.5)*16;
+        front+=jasmine(x+nx*off,y+ny*off,6+g()*5.5,g()*72);
+      }
+      if(g()>.7){ front+=bud(x+(g()-.5)*10,y+(g()-.5)*10,a+90+(g()-.5)*80); }
+    }
+  });
+  // a few extra blossoms near the corner
+  [[22,22,11],[52,14,9],[14,54,9],[44,48,10],[84,30,8],[28,88,8]].forEach(([x,y,r])=>{front+=jasmine(x,y,r,g()*72);});
+  return `<svg viewBox="0 0 240 240" aria-hidden="true">${back}${front}</svg>`;
+}
+const GARLAND = garlandSVG();
+document.querySelectorAll("[data-garland]").forEach(el=>{ el.innerHTML = GARLAND; });
+
+/* ---------- laurel wreath around the date ---------- */
+function wreathSVG(){
+  let s='';
+  [[100,255,1],[80,-75,-1]].forEach(([a0,a1,dir])=>{
+    for(let i=0;i<13;i++){
+      const t=i/12, ang=a0+(a1-a0)*t, rad=ang*Math.PI/180, px=50+38*Math.cos(rad), py=50+38*Math.sin(rad), tan=ang+dir*90;
+      [[-1,-30],[1,30]].forEach(([side,tilt])=>{
+        const nx=Math.cos(rad), ny=Math.sin(rad);
+        s+=`<g transform="translate(${(px+nx*side*2.6).toFixed(1)} ${(py+ny*side*2.6).toFixed(1)}) rotate(${(tan+tilt*dir*side*-1).toFixed(1)})"><path d="M0 0C3 -4.2 9 -4.2 12 0C9 4.2 3 4.2 0 0Z" fill="url(#gLeafG)" stroke="#2F4A28" stroke-width=".3"/></g>`;
+      });
+    }
+  });
+  s+=`<circle cx="50" cy="50" r="38" fill="none" stroke="#C6A15B" stroke-width=".6" opacity=".7"/>`;
+  return `<svg viewBox="0 0 100 100" aria-hidden="true">${s}</svg>`;
+}
+document.querySelectorAll("[data-wreath]").forEach(el=>{ el.outerHTML = wreathSVG(); });
+
+/* ---------- lanterns ---------- */
+const LANTERN = `<svg viewBox="0 0 60 160" aria-hidden="true">
+  <circle cx="30" cy="96" r="44" fill="url(#gHalo)"/>
+  <path d="M30 0V36" stroke="#B58B3E" stroke-width="1.6" stroke-dasharray="3 2.2"/>
+  <circle cx="30" cy="38" r="3.4" fill="none" stroke="url(#gFoil)" stroke-width="1.6"/>
+  <path d="M12 62C14 50 24 46 30 40C36 46 46 50 48 62Z" fill="url(#gFoil)" stroke="#8E6A2B" stroke-width=".6"/>
+  <path d="M14 62H46L42 118H18Z" fill="url(#gGlass)" stroke="#B58B3E" stroke-width="1.4"/>
+  <path d="M22 62L21 118M30 62V118M38 62L39 118" stroke="#C6A15B" stroke-width="1" opacity=".9"/>
+  <rect x="27" y="94" width="6" height="22" rx="1.5" fill="#FFF6DC"/>
+  <g class="fl"><path d="M30 92C25 85 30 78 30 72C35 79 35 86 30 92Z" fill="#FFE9A8"/><path d="M30 90C28 86 30 82 30 79C32 83 32 86 30 90Z" fill="#fff"/></g>
+  <path d="M14 118H46L41 128H19Z" fill="url(#gFoil)" stroke="#8E6A2B" stroke-width=".6"/>
+  <path d="M30 128V138" stroke="#C6A15B" stroke-width="1.4"/><path d="M30 138l3.4 6l-3.4 6l-3.4-6z" fill="url(#gFoil)"/>
+</svg>`;
+document.querySelectorAll("[data-lantern]").forEach(el=>{ el.innerHTML = LANTERN; });
+
+/* ---------- drapes ---------- */
+function lerp(a,b,t){return a+(b-a)*t}
+function mix(c1,c2,t){return [lerp(c1[0],c2[0],t),lerp(c1[1],c2[1],t),lerp(c1[2],c2[2],t)]}
+function foldStops(n,phase){
+  const dark=[112,134,102], mid=[168,186,154], light=[226,234,210], out=[];
+  for(let i=0;i<=80;i++){
+    const t=i/80;
+    const v=Math.pow((Math.sin(Math.PI*2*n*t+phase)+1)/2,1.35);
+    const w=(Math.sin(Math.PI*2*n*2.3*t+phase*1.7)+1)/2;
+    let c=mix(dark,mid,Math.min(1,v*.9+w*.12));
+    c=mix(c,light,Math.max(0,v-.7)*2.2);
+    out.push(`rgb(${c.map(x=>Math.round(x)).join(",")}) ${(t*100).toFixed(1)}%`);
+  }
+  return out;
+}
+const TIE = `<svg class="tie" viewBox="0 0 60 150" aria-hidden="true"><path d="M-2 20Q30 40 56 22" fill="none" stroke="#8E6A2B" stroke-width="7"/><path d="M-2 20Q30 40 56 22" fill="none" stroke="url(#gFoil)" stroke-width="4.6"/><path d="M-2 19Q30 38 56 21" fill="none" stroke="#FFF1C4" stroke-opacity=".6" stroke-width="1"/><circle cx="52" cy="26" r="6" fill="url(#gFoil)" stroke="#8E6A2B" stroke-width=".8"/><path d="M52 31V66" stroke="#C6A15B" stroke-width="3"/><ellipse cx="52" cy="72" rx="6" ry="8" fill="url(#gFoil)" stroke="#8E6A2B" stroke-width=".8"/><path d="M46 80Q43 104 40 136M49 82Q48 110 46 140M52 82V142M55 82Q56 110 58 140M58 80Q61 104 64 136" stroke="#C6A15B" stroke-width="2" fill="none"/><path d="M45 80H59L63 90H41Z" fill="url(#gFoil)"/></svg>`;
+document.querySelectorAll(".cur").forEach(el=>{
+  const left = el.dataset.side==="l";
+  el.style.setProperty("--fold", `linear-gradient(90deg,${foldStops(5, left?.6:2.4).join(",")})`);
+  el.insertAdjacentHTML("beforeend", TIE);
+});
+document.querySelectorAll("[data-valance]").forEach(svg=>{
+  const id="vg"+svg.closest("section").id;
+  const stops = foldStops(7,1.1).map(s=>{const m=s.match(/^(.*) ([\d.]+)%$/);return `<stop offset="${m[2]}%" stop-color="${m[1]}"/>`}).join("");
+  let path="M0 0H560V16", trim="";
+  for(let i=3;i>=0;i--){const x0=140*i,x1=140*(i+1),xm=(x0+x1)/2; path+=`Q${xm} 76 ${x0} 16`; trim+=`<path d="M${x1} 16Q${xm} 76 ${x0} 16" fill="none" stroke="url(#gFoil)" stroke-width="3"/>`;}
+  path+="Z";
+  let tassels=""; for(let i=0;i<=4;i++){const x=140*i; tassels+=`<g transform="translate(${x} 16)"><path d="M0 0V8" stroke="#C6A15B" stroke-width="2"/><ellipse cx="0" cy="11" rx="3" ry="4" fill="url(#gFoil)"/><path d="M-3 15L-4 26M0 15V28M3 15L4 26" stroke="#C6A15B" stroke-width="1.4" fill="none"/></g>`;}
+  svg.innerHTML = `<defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="0">${stops}</linearGradient></defs><path d="${path}" fill="url(#${id})"/><path d="M0 0H560V16H0Z" fill="rgba(20,34,20,.22)"/>${trim}${tassels}<path d="M0 15H560" stroke="url(#gFoil)" stroke-width="3"/>`;
+});
+
+const stage = $("stage"), details = $("details");
+function openStage(){ stage.classList.add("open"); }
+
+/* ---------- scroll: progress, back to top, parallax, reveal ---------- */
+const bar = $("progress"), topBtn = $("topBtn");
+let ticking=false;
+function onScroll(){
+  const h = root.scrollHeight - innerHeight;
+  bar.style.transform = "scaleX(" + (h>0 ? Math.min(1, scrollY/h) : 0) + ")";
+  topBtn.classList.toggle("show", scrollY>700);
+  if(!reduce){
+    document.querySelectorAll(".parallax").forEach(el=>{
+      const r = el.getBoundingClientRect(); const c = r.top + r.height/2 - innerHeight/2;
+      el.style.translate = "0 " + Math.max(-18,Math.min(18, c*-.05)).toFixed(1) + "px";
+    });
+  }
+  ticking=false;
+}
+addEventListener("scroll", ()=>{ if(!ticking){ ticking=true; requestAnimationFrame(onScroll); } }, {passive:true}); onScroll();
+topBtn.addEventListener("click", ()=> scrollTo({top:0, behavior: reduce?"auto":"smooth"}));
+const io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.15, rootMargin:"0px 0px -5% 0px"});
+document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+const io2 = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ details.classList.add("open"); io2.disconnect(); } }), {threshold:.25});
+io2.observe(details);
+
+/* ---------- FX: gold sparks + falling jasmine petals ---------- */
+const fx = $("fx"), fc = fx.getContext("2d");
+let FW=0,FH=0; const parts=[]; let fxRun=false;
+function sizeFx(){ const d=Math.min(devicePixelRatio||1,2); FW=innerWidth; FH=innerHeight; fx.width=FW*d; fx.height=FH*d; fc.setTransform(d,0,0,d,0,0); }
+sizeFx(); addEventListener("resize", sizeFx);
+const PET = [["#FFFFFF","#E8E2CC"],["#FDFBF1","#DDD6BA"],["#FFFFFF","#EFE9D6"],["#B9CDA3","#7F9A69"]];
+function drawPetal(p){
+  fc.save(); fc.translate(p.x,p.y); fc.rotate(p.rot); fc.scale(1,.55+.45*Math.abs(Math.cos(p.flip)));
+  const g=fc.createLinearGradient(0,-p.s,0,p.s); g.addColorStop(0,p.c[0]); g.addColorStop(1,p.c[1]);
+  fc.fillStyle=g; fc.globalAlpha=Math.min(1,p.life); fc.shadowColor="rgba(50,70,30,.35)"; fc.shadowBlur=4; fc.beginPath(); fc.moveTo(0,-p.s);
+  fc.bezierCurveTo(p.s*.95,-p.s*.7,p.s*.9,p.s*.55,0,p.s); fc.bezierCurveTo(-p.s*.9,p.s*.55,-p.s*.95,-p.s*.7,0,-p.s); fc.fill(); fc.restore();
+}
+function drawSpark(p){
+  fc.save(); fc.globalAlpha=Math.max(0,p.life); const g=fc.createRadialGradient(p.x,p.y,0,p.x,p.y,p.s*3);
+  g.addColorStop(0,"rgba(255,240,190,1)"); g.addColorStop(.4,"rgba(233,194,110,.85)"); g.addColorStop(1,"rgba(198,161,91,0)");
+  fc.fillStyle=g; fc.beginPath(); fc.arc(p.x,p.y,p.s*3,0,6.283); fc.fill(); fc.restore();
+}
+function fxLoop(){
+  fc.clearRect(0,0,FW,FH);
+  for(let i=parts.length-1;i>=0;i--){
+    const p=parts[i];
+    if(p.kind==="petal"){ p.sw+=p.swS; p.x+=Math.sin(p.sw)*.7+p.vx; p.y+=p.vy; p.vy=Math.min(p.vy+.075,1.5); p.vx*=.985; p.rot+=p.rotS; p.flip+=.035; p.life-=.0016; if(p.y>FH+24||p.life<=0) parts.splice(i,1); else drawPetal(p); }
+    else { p.x+=p.vx; p.y+=p.vy; p.vy+=.045; p.vx*=.985; p.life-=.016; if(p.life<=0) parts.splice(i,1); else drawSpark(p); }
+  }
+  if(parts.length) requestAnimationFrame(fxLoop); else fxRun=false;
+}
+function startFx(){ if(!fxRun){ fxRun=true; requestAnimationFrame(fxLoop); } }
+function petals(n){ if(reduce) return; for(let i=0;i<n;i++){ const c=PET[Math.floor(Math.random()*PET.length)];
+  parts.push({kind:"petal",x:FW/2+(Math.random()-.5)*FW*.8,y:FH*(.6+Math.random()*.25),s:7+Math.random()*7,c,vy:-(2+Math.random()*3.5),vx:(Math.random()-.5)*5,sw:Math.random()*6.28,swS:.01+Math.random()*.012,rot:Math.random()*6.28,rotS:(Math.random()-.5)*.03,flip:Math.random()*6.28,life:1.6}); } startFx(); }
+function sparks(x,y,n){ if(reduce) return; for(let i=0;i<n;i++){ const a=Math.random()*6.283, v=1+Math.random()*3.6;
+  parts.push({kind:"spark",x,y,s:1.2+Math.random()*2,vx:Math.cos(a)*v,vy:Math.sin(a)*v-1.4,life:.9+Math.random()*.6}); } startFx(); }
+
+/* ---------- Entry: ambient dust + opening ---------- */
+const dust = $("dust"), dc = dust.getContext("2d"); let dustOn = true; const dots=[];
+function sizeDust(){ const d=Math.min(devicePixelRatio||1,2); dust.width=innerWidth*d; dust.height=innerHeight*d; dc.setTransform(d,0,0,d,0,0); }
+sizeDust(); addEventListener("resize", sizeDust);
+for(let i=0;i<34;i++) dots.push({x:Math.random(),y:Math.random(),s:.8+Math.random()*2,v:.00012+Math.random()*.00026,p:Math.random()*6.28,t:.6+Math.random()*1.4});
+function dustLoop(t){
+  if(!dustOn) return;
+  dc.clearRect(0,0,innerWidth,innerHeight);
+  dots.forEach(d=>{ d.y-=d.v; d.x+=Math.sin(t/2400+d.p)*.00012; if(d.y<-.02){d.y=1.02; d.x=Math.random();}
+    const a=.35+.45*Math.sin(t/700*d.t+d.p); const x=d.x*innerWidth,y=d.y*innerHeight;
+    const g=dc.createRadialGradient(x,y,0,x,y,d.s*4); g.addColorStop(0,`rgba(255,232,160,${a})`); g.addColorStop(1,"rgba(198,161,91,0)");
+    dc.fillStyle=g; dc.beginPath(); dc.arc(x,y,d.s*4,0,6.283); dc.fill(); });
+  if(!reduce) requestAnimationFrame(dustLoop);
+}
+requestAnimationFrame(dustLoop);
+
+let opened=false;
+function finishEntry(fast){
+  const entry=$("entry"); entry.classList.add("gone"); dustOn=false;
+  root.classList.remove("entry-on"); scrollTo(0,0);
+  setTimeout(()=>{ openStage(); petals(26); }, fast?100:500);
+}
+function openInvitation(skip){
+  if(opened) return; opened=true;
+  if(CONFIG.musicOnOpen) Music.start();
+  if(skip || reduce){ finishEntry(true); return; }
+  $("env").classList.add("open");
+  setTimeout(()=>finishEntry(false), 3900);
+}
+$("openBtn").addEventListener("click", ()=>openInvitation(false));
+$("env").addEventListener("click", ()=>openInvitation(false));
+$("skipBtn").addEventListener("click", ()=>openInvitation(true));
+
+/* ---------- Scratch cards ---------- */
+function wrapText(ctx, text, maxW){
+  const words=text.split(" "), lines=[]; let line="";
+  words.forEach(w=>{ const t=line?line+" "+w:w; if(ctx.measureText(t).width>maxW && line){ lines.push(line); line=w; } else line=t; });
+  if(line) lines.push(line); return lines;
+}
+function makeScratch(id, paint, onDone){
+  const box=$(id), cv=document.createElement("canvas"); cv.setAttribute("aria-hidden","true"); box.appendChild(cv);
+  const ctx=cv.getContext("2d",{willReadFrequently:true});
+  let W=0,H=0,dpr=1,done=false,drawing=false,moves=0;
+  function render(){
+    dpr=Math.min(devicePixelRatio||1,2); W=box.clientWidth; H=box.clientHeight; cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.globalCompositeOperation="source-over"; paint(ctx,W,H);
+  }
+  render();
+  if(document.fonts) Promise.all([document.fonts.load('italic 500 20px "Cormorant Garamond"'),document.fonts.load('30px "Pinyon Script"')]).then(()=>{ if(!done&&moves===0) render(); }).catch(()=>{});
+  addEventListener("resize", ()=>{ if(!done&&moves===0) render(); });
+  const pos=e=>{const r=cv.getBoundingClientRect();return[e.clientX-r.left,e.clientY-r.top]};
+  function scratch(e){ const [x,y]=pos(e); ctx.globalCompositeOperation="destination-out"; ctx.beginPath(); ctx.arc(x,y,24,0,6.283); ctx.fill(); if(++moves%5===0) check(); }
+  function check(){
+    if(done) return;
+    const step=6*dpr, d=ctx.getImageData(0,0,cv.width,cv.height).data; let clear=0,total=0;
+    for(let y=0;y<cv.height;y+=step) for(let x=0;x<cv.width;x+=step){ total++; if(d[(y*cv.width+x)*4+3]<40) clear++; }
+    if(clear/total>.4) finish();
+  }
+  function finish(){ if(done) return; done=true; cv.classList.add("done"); const r=box.getBoundingClientRect(); sparks(r.left+r.width/2, r.top+r.height/2, 48); if(onDone) onDone(); }
+  cv.addEventListener("pointerdown",e=>{drawing=true;cv.setPointerCapture(e.pointerId);scratch(e)});
+  cv.addEventListener("pointermove",e=>{if(drawing)scratch(e)});
+  const stop=()=>{drawing=false;check()};
+  cv.addEventListener("pointerup",stop); cv.addEventListener("pointercancel",stop);
+  box._finish=finish;
+}
+function border(ctx,W,H,col){
+  ctx.strokeStyle=col; ctx.lineWidth=1.2; ctx.strokeRect(9.5,9.5,W-19,H-19); ctx.lineWidth=.8; ctx.strokeRect(15.5,15.5,W-31,H-31);
+  [[9.5,9.5,1,1],[W-9.5,9.5,-1,1],[9.5,H-9.5,1,-1],[W-9.5,H-9.5,-1,-1]].forEach(([x,y,sx,sy])=>{
+    ctx.beginPath(); ctx.arc(x+sx*13,y+sy*13,10,0,6.283); ctx.stroke();
+    for(let k=0;k<5;k++){ const a=k*Math.PI*2/5; ctx.beginPath(); ctx.ellipse(x+sx*13+Math.cos(a)*5,y+sy*13+Math.sin(a)*5,4.2,2.2,a,0,6.283); ctx.stroke(); }
+  });
+}
+function textBlock(ctx,W,H,lines){
+  let total=0; lines.forEach(l=>total+=l.size*1.35*(l.wrap?l.wrapped.length:1)); let y=(H-total)/2;
+  lines.forEach(l=>{ ctx.font=l.font; ctx.fillStyle=l.color; (l.wrap?l.wrapped:[l.text]).forEach(t=>{ y+=l.size*1.35; ctx.fillText(t,W/2,y-l.size*.3); }); y+=l.gap||0; });
+}
+function foilNoise(ctx,W,H,alpha,col){
+  ctx.strokeStyle=col; ctx.lineWidth=1; ctx.globalAlpha=alpha;
+  for(let x=-H;x<W;x+=9){ctx.beginPath();ctx.moveTo(x,H);ctx.lineTo(x+H,0);ctx.stroke();} ctx.globalAlpha=1;
+}
+function paintGold(ctx,W,H){
+  const g=ctx.createLinearGradient(0,0,W,H);
+  g.addColorStop(0,"#B58B3E"); g.addColorStop(.25,"#EAD08E"); g.addColorStop(.5,"#C7A053"); g.addColorStop(.75,"#EBD395"); g.addColorStop(1,"#A9802F");
+  ctx.fillStyle=g; ctx.fillRect(0,0,W,H); foilNoise(ctx,W,H,.18,"#5E3F10");
+  for(let i=0;i<260;i++){ ctx.fillStyle=`rgba(255,244,205,${Math.random()*.18})`; ctx.fillRect(Math.random()*W,Math.random()*H,1.4,1.4); }
+  border(ctx,W,H,"rgba(72,40,8,.7)");
+  ctx.textAlign="center"; ctx.textBaseline="alphabetic";
+  ctx.font='italic 500 21px "Cormorant Garamond", serif'; const w1=wrapText(ctx,"Every beautiful story has a special day…",W-90);
+  ctx.font='500 12.5px Jost, sans-serif'; const w2=wrapText(ctx,"SCRATCH TO REVEAL OUR NIKKAH DATE",W-70);
+  textBlock(ctx,W,H,[{font:'italic 500 21px "Cormorant Garamond", serif',size:21,color:"#3C2606",wrap:true,wrapped:w1,gap:16},{font:'500 12.5px Jost, sans-serif',size:13,color:"#4B2F08",wrap:true,wrapped:w2}]);
+}
+function paintGreen(ctx,W,H){
+  const g=ctx.createLinearGradient(0,0,W,H);
+  g.addColorStop(0,"#4A6B4B"); g.addColorStop(.5,"#2F4A33"); g.addColorStop(1,"#1F3324");
+  ctx.fillStyle=g; ctx.fillRect(0,0,W,H); foilNoise(ctx,W,H,.2,"#D9B96C");
+  for(let i=0;i<220;i++){ ctx.fillStyle=`rgba(255,228,160,${Math.random()*.16})`; ctx.fillRect(Math.random()*W,Math.random()*H,1.3,1.3); }
+  border(ctx,W,H,"rgba(233,203,130,.85)");
+  ctx.textAlign="center"; ctx.textBaseline="alphabetic";
+  ctx.font='italic 500 21px "Cormorant Garamond", serif'; const w1=wrapText(ctx,"A special place for our special day…",W-90);
+  ctx.font='500 12.5px Jost, sans-serif'; const w2=wrapText(ctx,"SCRATCH TO DISCOVER THE VENUE",W-70);
+  textBlock(ctx,W,H,[{font:'italic 500 21px "Cormorant Garamond", serif',size:21,color:"#F4E6B8",wrap:true,wrapped:w1,gap:16},{font:'500 12.5px Jost, sans-serif',size:13,color:"#E5C77D",wrap:true,wrapped:w2}]);
+}
+makeScratch("c1", paintGold, ()=>{ $("rev1").hidden=true; });
+makeScratch("c2", paintGreen, ()=>{ $("rev2").hidden=true; $("dirBtn").hidden=false; });
+$("rev1").addEventListener("click", ()=>$("c1")._finish());
+$("rev2").addEventListener("click", ()=>$("c2")._finish());
+["dirBtn","dirBtn2"].forEach(id=>{ $(id).href = mapsUrl; });
+
+/* ---------- Calendar ---------- */
+(function(){
+  $("calMonth").textContent = MONTHS[M-1] + " " + Y;
+  const grid=$("calGrid"); let h="";
+  ["S","M","T","W","T","F","S"].forEach(d=>h+=`<span class="dow" role="columnheader">${d}</span>`);
+  const first=new Date(Y,M-1,1).getDay(), days=new Date(Y,M,0).getDate();
+  for(let i=0;i<first;i++) h+="<span></span>";
+  for(let d=1;d<=days;d++) h+=`<span role="gridcell" class="${d===D?'hit':''}"${d===D?' aria-label="'+CONFIG.dateText+', Nikkah ceremony"':''}>${d}</span>`;
+  grid.innerHTML=h;
+  const p=n=>String(n).padStart(2,"0"), [hh,mm]=CONFIG.time.split(":").map(Number);
+  const start=`${Y}${p(M)}${p(D)}T${p(hh)}${p(mm)}00`;
+  const endH=hh+CONFIG.durationHours, end=`${Y}${p(M)}${p(D)}T${p(Math.min(endH,23))}${p(endH>23?59:mm)}00`;
+  const q=new URLSearchParams({action:"TEMPLATE",text:`Nikkah Ceremony of ${CONFIG.bride.short} & ${CONFIG.groom.short}`,dates:`${start}/${end}`,ctz:CONFIG.timezone,
+    details:`You are cordially invited to the Nikkah ceremony of ${CONFIG.bride.full} and ${CONFIG.groom.full}. Directions: ${mapsUrl}`,location:`${CONFIG.venue.name}, ${CONFIG.venue.address}`});
+  $("gcalBtn").href="https://calendar.google.com/calendar/render?"+q.toString();
+})();
+
+/* ---------- Music: your file, else soft synth. Starts on the guest's first touch/click (browsers block sound before that). ---------- */
+const Music=(function(){
+  const btn=$("musicBtn"), waves=$("waves"); let ac=null, master=null, on=false, audio=null, mode="", resumeAfterHide=false, touched=false;
+  function sync(){ btn.setAttribute("aria-pressed",String(on)); btn.setAttribute("aria-label", on?"Turn music off":"Turn music on"); waves.style.opacity=on?1:.25; }
+  function buildSynth(){
+    ac=new (window.AudioContext||window.webkitAudioContext)(); master=ac.createGain(); master.gain.value=0;
+    const lp=ac.createBiquadFilter(); lp.type="lowpass"; lp.frequency.value=900; master.connect(lp); lp.connect(ac.destination);
+    [130.81,196.0,261.63,329.63,392.0].forEach((f,i)=>{
+      const o=ac.createOscillator(), g=ac.createGain(); o.type="sine"; o.frequency.value=f; o.detune.value=(i%2?5:-5); g.gain.value=.05/(1+i*.4);
+      const lfo=ac.createOscillator(), lg=ac.createGain(); lfo.frequency.value=.05+i*.017; lg.gain.value=.018; lfo.connect(lg); lg.connect(g.gain);
+      o.connect(g); g.connect(master); o.start(); lfo.start();
+    });
+  }
+  async function synth(play){
+    if(!ac) buildSynth();
+    if(play){ await ac.resume(); master.gain.cancelScheduledValues(ac.currentTime); master.gain.linearRampToValueAtTime(.55,ac.currentTime+3); }
+    else { master.gain.cancelScheduledValues(ac.currentTime); master.gain.linearRampToValueAtTime(0,ac.currentTime+1); setTimeout(()=>ac.suspend(),1100); }
+  }
+  async function start(){
+    if(on) return;
+    try{
+      if(CONFIG.music && mode!=="synth"){
+        if(!audio){
+          audio=new Audio(CONFIG.music); audio.loop=!!CONFIG.musicLoop; audio.volume=.6; audio.preload="auto";
+          audio.addEventListener("ended",()=>{ on=false; sync(); });
+        }
+        try{ await audio.play(); mode="file"; on=true; sync(); return; }
+        catch(e){ if(e && e.name==="NotAllowedError") return; mode="synth"; audio=null; }
+      }
+      await synth(true); mode="synth"; on=true;
+    }catch(e){ on=false; }
+    sync();
+  }
+  async function stop(){
+    if(!on) return;
+    try{ if(mode==="file" && audio) audio.pause(); else await synth(false); }catch(e){}
+    on=false; sync();
+  }
+  btn.addEventListener("click", ()=>{ touched=true; on?stop():start(); });
+  document.addEventListener("visibilitychange", ()=>{
+    if(document.hidden){ if(on){ resumeAfterHide=true; stop(); } }
+    else if(resumeAfterHide){ resumeAfterHide=false; start(); }
+  });
+  addEventListener("pagehide", ()=>{ resumeAfterHide=false; stop(); });
+  if(CONFIG.musicOnOpen){
+    const first=e=>{
+      if(touched || (e.target && e.target.closest && e.target.closest("#musicBtn"))) return;
+      touched=true; ["pointerdown","touchend","keydown","click"].forEach(t=>removeEventListener(t,first,true)); start();
+    };
+    ["pointerdown","touchend","keydown","click"].forEach(t=>addEventListener(t,first,true));
+    if(CONFIG.music) start();
+  }
+  sync();
+  return {start,stop};
+})();
+</script>
+</body>
+</html>
